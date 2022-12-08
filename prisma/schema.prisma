@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  imagePath  String
+  name       String
+  password   String
+  created_at DateTime @default(now())
+
+  likes Like[]
+  posts Post[]
+
+  FriendshipSender    Friendship[] @relation(name: "senderId")
+  FriendshipRecipient Friendship[] @relation(name: "recipientId")
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  content   String
+  imagePath String?
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  String
+  createdAt DateTime @default(now())
+  likes     Like[]
+}
+
+model Like {
+  id       String  @id @default(uuid())
+  author   User?   @relation(fields: [authorId], references: [id])
+  authorId String
+  Post     Post?   @relation(fields: [postId], references: [id])
+  postId   String?
+}
+
+model Friendship {
+  id          Int      @id @default(autoincrement())
+  senderId    String
+  recipientId String
+  status      Boolean? @default(false)
+  createdAt   DateTime @default(now())
+
+  sender    User @relation("senderId", fields: [senderId], references: [id])
+  recipient User @relation("recipientId", fields: [recipientId], references: [id])
+}

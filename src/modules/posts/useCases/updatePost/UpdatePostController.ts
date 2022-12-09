@@ -12,11 +12,6 @@ export class UpdatePostController {
 
     const postExists = updatePostUseCase.verifyIfExists({ id });
 
-    if(!content){
-      throw new AppError("Some fields are empty");
-
-    }
-
     if (!postExists) {
       throw new AppError("Post does not exists");
     }

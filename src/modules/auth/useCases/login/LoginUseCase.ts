@@ -5,9 +5,11 @@ import jwt from "jsonwebtoken";
 import { AuthUserDTO } from "../../dtos/AuthUserDTO";
 
 interface UserProps {
-  name: string;
-  email: string;
-  imagePath: string;
+  user: {
+    name: string;
+    email: string;
+    imagePath: string;
+  };
   token: string;
 }
 
@@ -36,9 +38,11 @@ export class LoginUseCase {
     });
 
     return {
-      name: user.name,
-      email: user.email,
-      imagePath: user.imagePath,
+      user: {
+        name: user.name,
+        email: user.email,
+        imagePath: user.imagePath,
+      },
       token,
     };
   }

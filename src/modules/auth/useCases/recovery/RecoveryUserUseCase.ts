@@ -5,6 +5,7 @@ import { RecoveryUserDTO } from "../../dtos/RecoveryUserDTO";
 import { isTokenExpired } from "../../../../utils/verifyExpirationToken";
 
 interface UserProps {
+  id?: string;
   name?: string;
   email?: string;
   imagePath?: string;
@@ -27,6 +28,7 @@ export class RecoveryUseCase {
     });
 
     return {
+      id: user?.id,
       name: user?.name,
       email: user?.email,
       imagePath: user?.imagePath,

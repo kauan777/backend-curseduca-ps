@@ -20,14 +20,13 @@ export class UpdatePostUseCase {
     return true;
   }
 
-  async execute({ id, content, imagePath }: UpdatePostDTO): Promise<Post> {
+  async execute({ id, content }: UpdatePostDTO): Promise<Post> {
     const post = await prisma.post.update({
       where: {
         id,
       },
       data: {
         content,
-        imagePath,
       },
     });
     return post;

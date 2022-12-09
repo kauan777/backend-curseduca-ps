@@ -8,11 +8,14 @@ export class UpdatePostController {
 
     const { content } = req.body;
 
-    const imagePath = req.file?.filename;
-
     const updatePostUseCase = new UpdatePostUseCase();
 
     const postExists = updatePostUseCase.verifyIfExists({ id });
+
+    if(!content){
+      throw new AppError("Some fields are empty");
+
+    }
 
     if (!postExists) {
       throw new AppError("Post does not exists");
@@ -21,7 +24,6 @@ export class UpdatePostController {
     const post = await updatePostUseCase.execute({
       id,
       content,
-      imagePath,
     });
 
     return res.status(200).json(post);

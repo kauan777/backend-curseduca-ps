@@ -28,7 +28,7 @@ const upload = multer({
 postRoutes.get("/", getAllPostsController.handle);
 
 // Utilização do Path porque é uma alteração parcial
-postRoutes.patch("/:id", upload.single("image"), updatePostController.handle);
+postRoutes.patch("/:id", updatePostController.handle);
 
 postRoutes.delete("/:id", deletePostController.handle);
 

@@ -20,6 +20,7 @@ export class GetAllFriendsUseCase {
           select: {
             id: true,
             name: true,
+            email: true,
             imagePath: true,
           },
         },
@@ -27,6 +28,7 @@ export class GetAllFriendsUseCase {
           select: {
             id: true,
             name: true,
+            email: true,
             imagePath: true,
           },
         },

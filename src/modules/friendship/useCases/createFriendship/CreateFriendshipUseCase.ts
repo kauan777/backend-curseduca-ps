@@ -20,6 +20,29 @@ export class CreateFriendshipUseCase {
       }
     })
 
+    const ifFriends = await prisma.friendship.findFirst({
+      where: {
+        OR: [
+          {
+            AND: {
+              senderId: senderId,
+              recipientId: recipientId,
+            },
+          },
+          {
+            AND: {
+              senderId: recipientId,
+              recipientId: senderId,
+            },
+          }
+        ],
+      }
+    })
+
+    if (ifFriends) {
+      throw new AppError("You are friends");
+    }
+
     if (!sender || !recipient) {
       throw new AppError("Some users does not exists");
     }

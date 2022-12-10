@@ -41,7 +41,7 @@ model Like {
 }
 
 model Friendship {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   senderId    String
   recipientId String
   status      Boolean? @default(false)

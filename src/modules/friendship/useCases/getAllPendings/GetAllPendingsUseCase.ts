@@ -3,7 +3,7 @@ import { GetAllPendings } from "../../dtos/GetAllPendings";
 
 export class GetAllPendingsUseCase {
   async execute({ idUser }: GetAllPendings) {
-    const friendships = await prisma.friendship.findMany({
+    const pendings = await prisma.friendship.findMany({
       where: {
         status: false,
         recipientId: idUser,
@@ -21,6 +21,9 @@ export class GetAllPendingsUseCase {
         createdAt: "desc",
       },
     });
-    return friendships;
+    return {
+      pendings,
+      amountPendings: pendings.length,
+    };
   }
 }

@@ -58,17 +58,6 @@ JWT_KEY="CURSEDUCACURSEDUCACURSEDUCACURSEDUCACURSEDUCA"
 
 <br/>
 
-- Faça a migração
-
-```bash
-npm migrate
-# ou
-yarn migrate
-```
-
-
-<br/>
-
 - Instale as dependências
 
 ```bash
@@ -76,6 +65,17 @@ npm install
 # ou
 yarn 
 ```
+
+<br/>
+
+- Faça a migração
+
+```bash
+npm run migrate
+# ou
+yarn migrate
+```
+
 
 <br/>
 

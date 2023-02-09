@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { AcceptFriendshipController } from "../modules/friendship/useCases/acceptFriendship/AcceptFriendshipController";
-import { CreateFriendshipController } from "../../src/modules/friendship/useCases/createFriendship/CreateFriendshipController"
+import { CreateFriendshipController } from "../modules/friendship/useCases/createFriendship/CreateFriendShipController";
 import { DeleteFriendshipController } from "../modules/friendship/useCases/deleteFriendship/DeleteFriendshipController";
 import { GetAllFriendsController } from "../modules/friendship/useCases/getAllFriends/GetAllFriendsController";
 import { GetAllPendingsController } from "../modules/friendship/useCases/getAllPendings/GetAllPendingsController";

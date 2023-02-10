@@ -12,6 +12,12 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(routes);
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Criando rotas estáticas: retornando a imagem ao acessar a URL upload/....
 
 app.use("/uploads", express.static(path.resolve(__dirname, ".", "uploads")));
